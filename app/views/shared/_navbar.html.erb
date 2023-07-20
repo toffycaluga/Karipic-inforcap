@@ -1,0 +1,11 @@
+<nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+        <%= image_tag current_user.profile_photo,alt:"profile_photo",class:"profile_photo" %>
+      <%=current_user.name%>
+    </a>
+  <div class="d-flex">
+    <%= button_to 'Cerrar sesion', destroy_user_session_path,method: :delete , class:"btn btn-outline-danger" %>
+  </div>
+  </div>
+</nav>
