@@ -1,4 +1,5 @@
 class PhotosController < ApplicationController
+  before_action :authenticate_user!, only:[:new,:create]
   before_action :set_photo, only: %i[ show edit update destroy ]
 
   # GET /photos or /photos.json
@@ -12,7 +13,11 @@ class PhotosController < ApplicationController
 
   # GET /photos/new
   def new
-    @photo = Photo.new
+    if current_user.is_karina?
+      @photo = Photo.new
+    else
+      redirect_to root_path, alert: 'Solo Karina puede subir fotos.'
+    end
   end
 
   # GET /photos/1/edit
