@@ -14,7 +14,7 @@ class PhotosController < ApplicationController
   # GET /photos/new
   def new
     if current_user.is_karina?
-      @photo = Photo.new
+      @photo = current_user.photos.build
     else
       redirect_to root_path, alert: 'Solo Karina puede subir fotos.'
     end
@@ -26,7 +26,7 @@ class PhotosController < ApplicationController
 
   # POST /photos or /photos.json
   def create
-    @photo = Photo.new(photo_params)
+    @photo = current_user.photos.build(photo_params)
 
     respond_to do |format|
       if @photo.save
@@ -70,7 +70,7 @@ class PhotosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def photo_params
-      params.require(:photo).permit(:caption, :user_id)
+      params.require(:photo).permit(:caption,:photo, :user_id)
     end
                                    
 end

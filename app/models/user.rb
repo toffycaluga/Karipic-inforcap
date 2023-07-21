@@ -20,4 +20,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_one_attached :profile_photo
+
+  has_many :photos, dependent: :destroy
 end
