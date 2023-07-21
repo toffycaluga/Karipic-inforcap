@@ -1,13 +1,7 @@
 <nav class="navbar bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
-      
-      <% if current_user.profile_photo.present? %>
         <%= image_tag current_user.profile_photo,alt:"profile_photo",class:"profile_photo" %>
-      <% else %>
-        <i class="fa-solid fa-circle-user"></i>
-      <% end %>
-      
       <%=current_user.name%>
     </a>
   <div class="d-flex">

@@ -26,19 +26,18 @@ class PhotosController < ApplicationController
 
   # POST /photos or /photos.json
   def create
-    @photo = (photo_params)
-    @photo.
+    @photo = Photo.new(photo_params)
+    @photo.photo=process_image(photo_params[:photo]) if photo_params[:photo].present?
 
-      respond_to do |format|
-        if @photo.save
-          format.html { redirect_to photo_url(@photo), notice: "Photo was successfully created." }
-          format.json { render :show, status: :created, location: @photo }
-        else
-          format.html { render :new, status: :unprocessable_entity }
-          format.json { render json: @photo.errors, status: :unprocessable_entity }
-        end
-    end  
-
+    respond_to do |format|
+      if @photo.save
+        format.html { redirect_to photo_url(@photo), notice: "Photo was successfully created." }
+        format.json { render :show, status: :created, location: @photo }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @photo.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PATCH/PUT /photos/1 or /photos/1.json
@@ -72,6 +71,13 @@ class PhotosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def photo_params
-      params.require(:photo).permit(:caption, :photo,:user_id)
+      params.require(:photo).permit(:caption, :user_id)
     end
-  end
+    def process_image(image)
+      #procesar la imagen para reducir el tamaño y comprimir la calidad
+      processed_image = ImageProcessing::MiniMagick.source(image)
+                                                   .resize_to_limit(500,500) #Redimensionamos la imagen a un máximo de 500x500
+                                                   .quality(80) # Comprimir la calidad de la imagen al 80%
+                                                   .call
+      processed_image                                        
+end
