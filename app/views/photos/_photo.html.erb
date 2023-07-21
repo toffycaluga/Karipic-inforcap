@@ -1,12 +1,21 @@
-<div id="<%= dom_id photo %>">
-  <p>
-    <strong>Caption:</strong>
-    <%= photo.caption %>
-  </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= photo.user_id %>
-  </p>
-
+<div id="<%= dom_id photo %>" class="card text-center" >
+  <%= image_tag photo.photo,class:"card-img-top" %>
+  <div class="card-body">
+    <p class="card-text">
+      <span>
+        <%= photo.caption  %>
+      </span>
+      <br>
+      <small class="text-body-secondary">
+        Creada <%= time_ago_in_words(photo.created_at) %> atrás.
+      </small>
+    </p>
+    
+    <% if controller_name == 'photos' && action_name != 'show' %>
+      <p class="text-end">
+        <%= link_to "Show this photo", photo ,class:"btn btn-primary"%>
+      </p>
+    <% end %>
+    
+   </div>
 </div>
