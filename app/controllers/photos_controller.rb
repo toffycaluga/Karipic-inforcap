@@ -27,6 +27,7 @@ class PhotosController < ApplicationController
   # POST /photos or /photos.json
   def create
     @photo = Photo.new(photo_params)
+    @photo.photo=process_image(photo_params[:photo]) if photo_params[:photo].present?
 
     respond_to do |format|
       if @photo.save
@@ -72,4 +73,11 @@ class PhotosController < ApplicationController
     def photo_params
       params.require(:photo).permit(:caption, :user_id)
     end
+    def process_image(image)
+      #procesar la imagen para reducir el tamaño y comprimir la calidad
+      processed_image=ImageProcessing::MiniMagick.source(image)
+                                                 .resize_to_limit(500,500) #Redimensionamos la imagen a un máximo de 500x500
+                                                 .quality(80) # Comprimir la calidad de la imagen al 80%
+                                                 .call
+      processed_image                                        
 end
