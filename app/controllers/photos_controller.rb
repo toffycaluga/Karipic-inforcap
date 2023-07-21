@@ -75,9 +75,9 @@ class PhotosController < ApplicationController
     end
     def process_image(image)
       #procesar la imagen para reducir el tamaño y comprimir la calidad
-      processed_image=ImageProcessing::MiniMagick.source(image)
-                                                 .resize_to_limit(500,500) #Redimensionamos la imagen a un máximo de 500x500
-                                                 .quality(80) # Comprimir la calidad de la imagen al 80%
-                                                 .call
+      processed_image = ImageProcessing::MiniMagick.source(image)
+                                                   .resize_to_limit(500,500) #Redimensionamos la imagen a un máximo de 500x500
+                                                   .quality(80) # Comprimir la calidad de la imagen al 80%
+                                                   .call
       processed_image                                        
 end
