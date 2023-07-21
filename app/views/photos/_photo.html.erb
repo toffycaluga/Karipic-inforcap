@@ -6,10 +6,16 @@
         <%= photo.caption  %>
       </span>
       <br>
-
       <small class="text-body-secondary">
         Creada <%= time_ago_in_words(photo.created_at) %> atrás.
       </small>
     </p>
+    
+    <% if controller_name == 'photos' && action_name != 'show' %>
+      <p class="text-end">
+        <%= link_to "Show this photo", photo ,class:"btn btn-primary"%>
+      </p>
+    <% end %>
+    
    </div>
 </div>

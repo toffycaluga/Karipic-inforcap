@@ -1,14 +1,16 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Photos</h1>
-
-<div id="photos">
-  <% @photos.each do |photo| %>
-    <%= render photo %>
-    <p>
-      <%= link_to "Show this photo", photo %>
-    </p>
-  <% end %>
-</div>
-
 <%= link_to "New photo", new_photo_path %>
+
+  <div id="photos" class="row row-cols-1 row-cols-md-2 g-4">
+
+    <% @photos.each do |photo| %>
+      <div class="col">
+        <%= render photo %>
+      </div>
+    <% end %>
+  
+  </div>
+
+
