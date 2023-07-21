@@ -1,8 +1,9 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Photos</h1>
+<% if current_user.is_karina? %>
 <%= link_to "New photo", new_photo_path %>
-
+<%end%>
   <div id="photos" class="row row-cols-1 row-cols-md-2 g-4">
 
     <% @photos.each do |photo| %>
