@@ -1,8 +1,15 @@
-<div id="<%= dom_id photo %>">
-  <%= image_tag photo.photo %>
+<div id="<%= dom_id photo %>" class="card text-center" >
+  <%= image_tag photo.photo,class:"card-img-top" %>
+  <div class="card-body">
+    <p class="card-text">
+      <span>
+        <%= photo.caption  %>
+      </span>
+      <br>
 
-  <p>
-    <strong>Caption:</strong>
-    <%= photo.caption %>
-  </p>
+      <small class="text-body-secondary">
+        Creada <%= time_ago_in_words(photo.created_at) %> atrás.
+      </small>
+    </p>
+   </div>
 </div>
