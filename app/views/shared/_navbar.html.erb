@@ -1,19 +1,28 @@
-<nav class="navbar bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      
-      <% if current_user.profile_photo.present? %>
-        <%= image_tag current_user.profile_photo,alt:"profile_photo",class:"profile_photo" %>
-      <% else %>
-        <i class="fa-solid fa-circle-user"></i>
-      <% end %>
-      
-      
-      <%=current_user.name%>
-    </a>
+<nav class="navbar navbar navbar-expand-lg bg-dark border-bottom border-bottom-dark align-items-center justify-content-center" data-bs-theme="dark">
+  <div class="container-fluid ">
     
-  <div class="d-flex">
-    <%= button_to 'Cerrar sesion', destroy_user_session_path,method: :delete , class:"btn btn-outline-danger" %>
-  </div>
+      <p class="navbar-brand">
+      <% if current_user.profile_photo.present? %>
+        <%= image_tag current_user.profile_photo,alt:"profile_photo",class:"profile_photo navbar-brand" %>
+      <% else %>
+        <i class="fa-solid fa-circle-user navbar-brand"></i>
+      <% end %> 
+
+      <%=current_user.name%>
+      </p>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-expanded="false" aria-label="toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+      <div id="navbar" class="collapse navbar-collapse  mb-3 mt-1">
+        <ul class="navbar-nav me-auto p-0">
+          <li class="nav-item">
+            <%= link_to 'Home', root_path, class:"nav-link" %>
+          </li>
+        </ul>
+      <div class="d-flex">
+          <%= button_to 'Cerrar sesion', destroy_user_session_path,method: :delete , class:"btn btn-outline-danger" %>
+      </div>
+      </div>
   </div>
 </nav>
