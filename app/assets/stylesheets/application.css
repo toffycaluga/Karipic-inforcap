@@ -21,3 +21,18 @@
 .card{
     width: 25rem;
 }
+.abs-center {
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+  
+  .notice{
+    color:#05ae05;
+    background-color: #9ef79e;
+  }
+  .alert{
+    color:#ae0505;
+    background-color: #f7b39e;
+  }
