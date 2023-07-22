@@ -20,8 +20,15 @@
    </div>
    <div class="card-footer text-start">
     <!-- Mostrar comentarios existentes -->
+    <%=request.path%>
     <%= render 'comment' ,photo:photo%>
+
       <!-- Formulario para agregar nuevos comentarios -->
-    <%= render 'comment_form', commentable: @photo %>
+      
+      <% if current_page?(photo_path(photo.id)) %>
+        
+        <%= render 'comment_form', commentable: @photo %>
+      <% end %>
+      
    </div>
 </div>
