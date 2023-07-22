@@ -1,7 +1,11 @@
 class CommentsController < ApplicationController
     before_action :authenticate_user!
+    def new
+      @comment = current_user.comments.build
+    end
 
     def create
+
       @commentable = find_commentable
       @comment = @commentable.comments.build(comment_params)
       @comment.user = current_user

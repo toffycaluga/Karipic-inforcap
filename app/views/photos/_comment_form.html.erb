@@ -1,8 +1,5 @@
 <!-- app/views/comments/_comment_form.html.erb -->
-<%= form_with(model: Comment.new) do |form| %>
-  <%= form.hidden_field :commentable_id, value: @commentable.id %>
-  <%= form.hidden_field :commentable_type, value: @commentable.class.to_s %>
-
+<%= form_for([@photo, @photo.comments.build]) do |form| %>
   <div class="field">
     <%= form.text_area :content, placeholder: 'Escribe un comentario...' %>
   </div>
