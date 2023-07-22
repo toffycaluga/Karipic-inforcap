@@ -22,4 +22,5 @@ class User < ApplicationRecord
   has_one_attached :profile_photo
 
   has_many :photos, dependent: :destroy
+  has_many :comments, as: :commentable,dependent: :destroy
 end

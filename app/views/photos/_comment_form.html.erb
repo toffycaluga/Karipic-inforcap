@@ -1,0 +1,10 @@
+<!-- app/views/photos/_comment_form.html.erb -->
+<%= form_with(model: @photo.comments.build, url: photo_comments_path(@photo)) do |form| %>
+  <%= form.hidden_field :commentable_id, value: @photo.id %>
+  <%= form.hidden_field :commentable_type, value: @photo.class.to_s %>
+
+  <div class="field">
+    <%= form.text_area :content, placeholder: 'Escribe un comentario...' %>
+  </div>
+  <%= form.submit 'Agregar comentario', class: 'btn btn-primary' %>
+<% end %>
