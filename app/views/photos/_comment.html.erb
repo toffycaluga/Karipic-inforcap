@@ -1,0 +1,16 @@
+ <!-- Mostrar comentarios existentes -->
+    <strong class="text-body-secondary">Comentarios</strong>
+    <% photo.comments.each do |comment| %>
+    <div class="container ">
+        <p class="m-0">
+            <%= image_tag comment.user.profile_photo,alt:"profile_photo",class:"profile_photo" %>
+            <strong><%= comment.user.try(:name) %>:</strong>
+        </p>
+        <p class="m-0">
+            <%= comment.content %>  
+        </p >
+        <small class="text-body-secondary text-end mb-2">
+         <%= time_ago_in_words(comment.created_at) %> ago.
+        </small>
+    </div>
+    <% end %>

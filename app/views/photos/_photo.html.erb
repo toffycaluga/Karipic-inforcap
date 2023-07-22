@@ -20,10 +20,7 @@
    </div>
    <div class="card-footer text-start">
     <!-- Mostrar comentarios existentes -->
-    <h3>Comentarios</h3>
-    <% @photo.comments.each do |comment| %>
-      <p><strong><%= comment.user.try(:name) %>:</strong> <%= comment.content %></p>
-    <% end %>
+    <%= render 'comment' ,photo:photo%>
       <!-- Formulario para agregar nuevos comentarios -->
     <%= render 'comment_form', commentable: @photo %>
    </div>
