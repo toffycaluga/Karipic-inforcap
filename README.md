@@ -1,7 +1,7 @@
 # KariPic - Plataforma de Fotografía por Karina
 
 KariPic es una plataforma de fotografía desarrollada para la fotógrafa reconocida mundialmente, Karina. Esta aplicación permite a los usuarios ver y comentar las fotografías que Karina ha tomado, creando una experiencia más profesional y personalizada que las redes sociales convencionales.
-![img](https://github.com/toffycaluga/Karipi-inforcap/blob/main/app/assets/images/r1.png)
+![img](https://github.com/toffycaluga/Karipic-inforcap/blob/main/app/assets/images/r1.png)
 ![img](https://github.com/toffycaluga/Karipic-inforcap/blob/main/app/assets/images/r2.png)
 
 ## Características
