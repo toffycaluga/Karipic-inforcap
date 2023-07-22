@@ -1,6 +1,7 @@
  <!-- Mostrar comentarios existentes -->
     <strong class="text-body-secondary">Comentarios</strong>
-    <% photo.comments.each do |comment| %>
+    <% sorted_comments = photo.comments.sort_by { |comment| comment.created_at }.reverse %>
+    <% sorted_comments.each do |comment| %>
     <div class="container ">
         <p class="m-0">
             <%= image_tag comment.user.profile_photo,alt:"profile_photo",class:"profile_photo" %>

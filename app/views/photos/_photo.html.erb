@@ -11,24 +11,27 @@
       </small>
     </p>
     
+    
+   </div>
+   <div class="card-footer text-start">
+      <% if current_page?(photo_path(photo.id)) %>
+        <!-- Mostrar comentarios existentes -->
+        <%= render 'comment' ,photo:photo%>
+        <!-- Formulario para agregar nuevos comentarios -->
+        <%= render 'comment_form', commentable: @photo %>
+      <% else %>
+        <% last_comment = photo.comments.last %>
+        <% if last_comment %>
+          <div class="comment">
+            <p><strong><%= last_comment.user.name %>:</strong> <%= last_comment.content %></p>
+          </div>
+        <% end %>
+      <% end %>
     <% if controller_name == 'photos' && action_name != 'show' %>
       <p class="text-end">
         <%= link_to "Show this photo", photo ,class:"btn btn-primary"%>
       </p>
     <% end %>
-    
-   </div>
-   <div class="card-footer text-start">
-    <!-- Mostrar comentarios existentes -->
-    <%=request.path%>
-    <%= render 'comment' ,photo:photo%>
-
-      <!-- Formulario para agregar nuevos comentarios -->
-      
-      <% if current_page?(photo_path(photo.id)) %>
-        
-        <%= render 'comment_form', commentable: @photo %>
-      <% end %>
       
    </div>
 </div>
