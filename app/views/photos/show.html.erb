@@ -1,14 +1,6 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @photo %>
-<!-- Mostrar comentarios existentes -->
-<h3>Comentarios</h3>
-<% @photo.comments.each do |comment| %>
-  <p><strong><%= comment.user.name %>:</strong> <%= comment.content %></p>
-<% end %>
-
-<!-- Formulario para agregar nuevos comentarios -->
-<%= render 'comment_form', commentable: @photo %>%
 
 <% if current_user.is_karina? %>
 <div>

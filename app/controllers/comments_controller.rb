@@ -1,26 +1,25 @@
 class CommentsController < ApplicationController
     before_action :authenticate_user!
     def new
-      @comment = current_user.comments.build
+      @comment = Comment.new
     end
 
     def create
+      @photo = Photo.find(params[:photo_id])
+    @comment = @photo.comments.build(comment_params)
+    @comment.user = current_user # Asocia el comentario al usuario actualmente autenticado
 
-      @commentable = find_commentable
-      @comment = @commentable.comments.build(comment_params)
-      @comment.user = current_user
-  
       if @comment.save
-        redirect_to commentable_path, notice: 'Comentario creado correctamente.'
+        redirect_to request.fullpath, notice: 'Comentario creado correctamente.'
       else
-        redirect_to commentable_path, alert: 'No se pudo crear el comentario.'
+        redirect_to request.fullpath, alert: 'No se pudo crear el comentario.'
       end
     end
   
     private
   
     def comment_params
-      params.require(:comment).permit(:content, :commentable_id, :commentable_type, :user_id)
+      params.require(:comment).permit(:content)
     end
   
     def commentable_path
